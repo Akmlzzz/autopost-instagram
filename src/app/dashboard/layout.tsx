@@ -9,7 +9,7 @@ export default function DashboardLayout({
 }) {
   return (
     <TooltipProvider>
-      <div className="flex min-h-screen bg-[oklch(0.09_0_0)]">
+      <div className="flex min-h-screen bg-neutral-50 dark:bg-[oklch(0.09_0_0)]">
         {/* Fixed Sidebar */}
         <Sidebar />
 

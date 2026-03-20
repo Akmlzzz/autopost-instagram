@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { Sparkles, CalendarClock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -23,20 +22,20 @@ export function AssetModal({ children, assetName }: AssetModalProps) {
       <DialogTrigger render={children} />
       
       {/* max-w-4xl ensures a nice wide modal for the 2-column split */}
-      <DialogContent className="max-w-4xl gap-0 border-neutral-800 bg-[oklch(0.09_0_0)] p-0 outline-none sm:rounded-2xl">
+      <DialogContent className="max-w-4xl gap-0 border-neutral-200 bg-white p-0 outline-none sm:rounded-2xl dark:border-neutral-800 dark:bg-[oklch(0.09_0_0)]">
         <div className="grid grid-cols-1 md:grid-cols-2">
           
           {/* Left Panel: Preview Area */}
-          <div className="flex flex-col border-b border-neutral-800 bg-neutral-950/50 p-6 md:border-b-0 md:border-r">
+          <div className="flex flex-col border-b border-neutral-200 bg-neutral-50/50 p-6 md:border-b-0 md:border-r dark:border-neutral-800 dark:bg-neutral-950/50">
             <DialogHeader className="mb-4">
-              <DialogTitle className="text-sm font-extrabold uppercase tracking-widest text-neutral-100">
+              <DialogTitle className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-neutral-100">
                 ASSET PREVIEW
               </DialogTitle>
             </DialogHeader>
-            <div className="relative isolate flex aspect-4/5 w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900 shadow-inner">
+            <div className="relative isolate flex aspect-4/5 w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 shadow-inner dark:border-neutral-800 dark:bg-neutral-900">
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60" />
               <div className="z-10 mt-auto w-full p-4">
-                <p className="truncate text-center text-xs font-bold text-neutral-400">
+                <p className="truncate text-center text-xs font-bold text-white dark:text-neutral-400">
                   {assetName}
                 </p>
               </div>
@@ -46,7 +45,7 @@ export function AssetModal({ children, assetName }: AssetModalProps) {
           {/* Right Panel: Editor Area */}
           <div className="flex flex-col p-6">
             <DialogHeader className="mb-6">
-              <DialogTitle className="text-sm font-extrabold uppercase tracking-widest text-neutral-100">
+              <DialogTitle className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-neutral-100">
                 POSTING DETAILS
               </DialogTitle>
             </DialogHeader>
@@ -62,7 +61,7 @@ export function AssetModal({ children, assetName }: AssetModalProps) {
                   <Input
                     id="title"
                     defaultValue={assetName}
-                    className="h-10 border-neutral-800 bg-neutral-900 text-sm font-medium text-neutral-100 focus-visible:border-lime-400/50 focus-visible:ring-lime-400/20"
+                    className="h-10 border-neutral-200 bg-neutral-50 text-sm font-medium text-neutral-900 focus-visible:border-lime-500 focus-visible:ring-lime-400/20 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:focus-visible:border-lime-400/50"
                   />
                 </div>
 
@@ -74,13 +73,13 @@ export function AssetModal({ children, assetName }: AssetModalProps) {
                   <Textarea
                     id="caption"
                     placeholder="Write a compelling caption..."
-                    className="min-h-[140px] resize-none border-neutral-800 bg-neutral-900 p-3 text-sm font-medium text-neutral-100 placeholder:text-neutral-600 focus-visible:border-lime-400/50 focus-visible:ring-lime-400/20"
+                    className="min-h-[140px] resize-none border-neutral-200 bg-neutral-50 p-3 text-sm font-medium text-neutral-900 placeholder:text-neutral-400 focus-visible:border-lime-500 focus-visible:ring-lime-400/20 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-600 dark:focus-visible:border-lime-400/50"
                   />
                   
                   {/* GENERATE AI BUTTON */}
                   <Button
                     variant="outline"
-                    className="group mt-2 h-9 w-full border-lime-400/30 bg-transparent text-[10px] font-bold tracking-widest text-lime-400 transition-all hover:bg-lime-400/10 hover:text-lime-300 focus-visible:ring-lime-400/30"
+                    className="group mt-2 h-9 w-full border-lime-400/60 bg-transparent text-[10px] font-bold tracking-widest text-lime-600 transition-all hover:bg-lime-50 hover:text-lime-700 focus-visible:ring-lime-400/30 dark:border-lime-400/30 dark:text-lime-400 dark:hover:bg-lime-400/10 dark:hover:text-lime-300"
                   >
                     <Sparkles className="mr-2 h-3.5 w-3.5" strokeWidth={2.5} />
                     GENERATE CAPTION WITH AI
@@ -96,7 +95,7 @@ export function AssetModal({ children, assetName }: AssetModalProps) {
                   <Input
                     id="scheduled_at"
                     type="datetime-local"
-                    className="h-10 border-neutral-800 bg-neutral-900 text-sm font-medium text-neutral-100 focus-visible:border-lime-400/50 focus-visible:ring-lime-400/20 [&::-webkit-calendar-picker-indicator]:invert"
+                    className="h-10 border-neutral-200 bg-neutral-50 text-sm font-medium text-neutral-900 focus-visible:border-lime-500 focus-visible:ring-lime-400/20 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:focus-visible:border-lime-400/50 dark:[&::-webkit-calendar-picker-indicator]:invert"
                   />
                 </div>
               </div>

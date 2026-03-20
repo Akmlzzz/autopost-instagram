@@ -15,8 +15,6 @@ const ROUTE_LABELS: Record<string, string> = {
 
 function Breadcrumbs() {
   const pathname = usePathname()
-
-  // Build breadcrumb segments from the URL path
   const segments = pathname.split('/').filter(Boolean)
 
   const crumbs = segments.map((seg, idx) => {
@@ -29,20 +27,20 @@ function Breadcrumbs() {
     <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm">
       <Link
         href="/dashboard"
-        className="flex items-center gap-1 text-neutral-500 transition-colors hover:text-neutral-200"
+        className="flex items-center gap-1 text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-neutral-200"
       >
         <Home className="h-3.5 w-3.5" />
         <span>Home</span>
       </Link>
       {crumbs.slice(1).map((crumb, i) => (
         <span key={crumb.href} className="flex items-center gap-1.5">
-          <ChevronRight className="h-3 w-3 text-neutral-700" />
+          <ChevronRight className="h-3 w-3 text-neutral-400 dark:text-neutral-700" />
           <Link
             href={crumb.href}
             className={
               i === crumbs.length - 2
-                ? 'font-medium text-neutral-100'
-                : 'text-neutral-500 transition-colors hover:text-neutral-200'
+                ? 'font-medium text-neutral-900 dark:text-neutral-100'
+                : 'text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-neutral-200'
             }
           >
             {crumb.label}
@@ -55,7 +53,7 @@ function Breadcrumbs() {
 
 export default function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b border-white/[0.07] bg-[oklch(0.09_0_0)]/80 px-6 backdrop-blur-md">
+    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-white/80 border-neutral-200 px-6 backdrop-blur-md dark:border-white/[0.07] dark:bg-[oklch(0.09_0_0)]/80">
       {/* Breadcrumbs */}
       <div className="flex-1">
         <Breadcrumbs />
@@ -63,12 +61,12 @@ export default function DashboardHeader() {
 
       {/* Search bar */}
       <div className="relative hidden w-64 sm:block">
-        <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-600" />
+        <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400 dark:text-neutral-600" />
         <input
           id="dashboard-search"
           type="search"
           placeholder="Search assets..."
-          className="h-8 w-full rounded-lg border border-white/8 bg-white/5 pl-8 pr-3 text-sm text-neutral-300 placeholder:text-neutral-600 outline-none transition focus:border-lime-400/40 focus:bg-white/8 focus:ring-2 focus:ring-lime-400/20"
+          className="h-8 w-full rounded-lg border bg-neutral-50 border-neutral-200 pl-8 pr-3 text-sm text-neutral-700 placeholder:text-neutral-400 outline-none transition focus:border-lime-400/60 focus:bg-white focus:ring-2 focus:ring-lime-400/20 dark:border-white/8 dark:bg-white/5 dark:text-neutral-300 dark:placeholder:text-neutral-600 dark:focus:bg-white/8"
         />
       </div>
 

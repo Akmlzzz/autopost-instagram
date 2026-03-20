@@ -29,18 +29,18 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 flex w-[68px] flex-col items-center gap-2 border-r border-white/[0.07] bg-[oklch(0.11_0_0)] py-4">
+    <aside className="fixed inset-y-0 left-0 z-40 flex w-[68px] flex-col items-center gap-2 border-r bg-white border-neutral-200 py-4 dark:border-white/[0.07] dark:bg-[oklch(0.11_0_0)]">
       {/* Logo */}
       <Link
         href="/dashboard"
-        className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-lime-400/10 ring-1 ring-lime-400/30 transition-all hover:bg-lime-400/20"
+        className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-lime-400/20 ring-1 ring-lime-400/50 transition-all hover:bg-lime-400/30 dark:bg-lime-400/10 dark:ring-lime-400/30 dark:hover:bg-lime-400/20"
         aria-label="Home"
       >
-        <Zap className="h-5 w-5 text-lime-400" strokeWidth={2.5} />
+        <Zap className="h-5 w-5 text-lime-500 dark:text-lime-400" strokeWidth={2.5} />
       </Link>
 
       {/* Separator line */}
-      <div className="mb-2 h-px w-8 bg-white/10" />
+      <div className="mb-2 h-px w-8 bg-neutral-200 dark:bg-white/10" />
 
       {/* Nav items */}
       <nav className="flex flex-1 flex-col items-center gap-1" aria-label="Sidebar navigation">
@@ -61,16 +61,16 @@ export default function Sidebar() {
                     className={cn(
                       'group flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-150',
                       isActive
-                        ? 'bg-lime-400/12 text-lime-400 ring-1 ring-lime-400/25'
-                        : 'text-neutral-500 hover:bg-white/6 hover:text-neutral-100'
+                        ? 'bg-lime-100 text-lime-600 ring-1 ring-lime-400/40 dark:bg-lime-400/12 dark:text-lime-400 dark:ring-lime-400/25'
+                        : 'text-neutral-400 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-500 dark:hover:bg-white/6 dark:hover:text-neutral-100'
                     )}
                   >
                     <Icon
                       className={cn(
                         'h-[18px] w-[18px] transition-colors',
                         isActive
-                          ? 'text-lime-400'
-                          : 'text-neutral-500 group-hover:text-neutral-100'
+                          ? 'text-lime-600 dark:text-lime-400'
+                          : 'text-neutral-400 group-hover:text-neutral-900 dark:text-neutral-500 dark:group-hover:text-neutral-100'
                       )}
                       strokeWidth={isActive ? 2.5 : 1.75}
                     />
@@ -79,7 +79,7 @@ export default function Sidebar() {
               />
               <TooltipContent
                 side="right"
-                className="border border-white/10 bg-neutral-900 text-neutral-100 text-xs"
+                className="border border-neutral-200 bg-white text-xs text-neutral-900 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-100"
               >
                 {label}
               </TooltipContent>
@@ -89,8 +89,8 @@ export default function Sidebar() {
       </nav>
 
       {/* Bottom: active indicator dot */}
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 ring-1 ring-white/10">
-        <span className="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_6px_oklch(0.88_0.234_128.48)]" />
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-neutral-200 dark:bg-neutral-800 dark:ring-white/10">
+        <span className="h-2 w-2 rounded-full bg-lime-500 shadow-[0_0_6px_var(--color-lime-400)] dark:bg-lime-400" />
       </div>
     </aside>
   )
