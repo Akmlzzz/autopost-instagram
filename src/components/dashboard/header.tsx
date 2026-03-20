@@ -2,7 +2,8 @@
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { Search, Plus, ChevronRight, Home } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import { Search, Plus, ChevronRight, Home, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const ROUTE_LABELS: Record<string, string> = {
@@ -51,6 +52,23 @@ function Breadcrumbs() {
   )
 }
 
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      className="relative h-8 w-8 shrink-0 rounded-lg border-neutral-200 bg-white text-neutral-500 shadow-sm transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:ring-lime-400/30 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
+    >
+      <Sun className="h-[18px] w-[18px] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-[18px] w-[18px] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
+  )
+}
+
 export default function DashboardHeader() {
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-white/80 border-neutral-200 px-6 backdrop-blur-md dark:border-white/[0.07] dark:bg-[oklch(0.09_0_0)]/80">
@@ -70,14 +88,18 @@ export default function DashboardHeader() {
         />
       </div>
 
-      {/* CTA Button */}
-      <Button
-        id="batch-upload-btn"
-        className="h-8 gap-1.5 bg-lime-400 px-3 text-xs font-bold text-neutral-950 shadow-[0_0_16px_oklch(0.88_0.234_128.48/30%)] transition-all hover:bg-lime-300 hover:shadow-[0_0_24px_oklch(0.88_0.234_128.48/50%)] active:scale-95"
-      >
-        <Plus className="h-3.5 w-3.5" strokeWidth={3} />
-        Batch Upload
-      </Button>
+      {/* Actions: Theme Toggle & CTA */}
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
+        
+        <Button
+          id="batch-upload-btn"
+          className="h-8 gap-1.5 bg-lime-400 px-3 text-xs font-bold text-neutral-950 shadow-[0_0_16px_oklch(0.88_0.234_128.48/30%)] transition-all hover:bg-lime-300 hover:shadow-[0_0_24px_oklch(0.88_0.234_128.48/50%)] active:scale-95"
+        >
+          <Plus className="h-3.5 w-3.5" strokeWidth={3} />
+          Batch Upload
+        </Button>
+      </div>
     </header>
   )
 }
