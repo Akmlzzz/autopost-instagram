@@ -1,0 +1,28 @@
+name: Bot Auto-Post Instagram
+on:
+  schedule:
+    - cron: "0 * * * *" # Bekerja di Top of Every Hour (Jam 1, Jam 2, dll).
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mendownload repositori
+        uses: actions/checkout@v4
+
+      - name: Mengatur Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Eksekusi Bot
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
+        run: python bot.py
